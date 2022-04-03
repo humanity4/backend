@@ -7,7 +7,7 @@ class Neighborhood(models.Model):
 
 class NeighborhoodImages(models.Model):
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
-    link = models.CharField(primary_key=True, max_length=512)
+    link = models.ImageField()
 
 class SisterOrg(models.Model):
     name = models.CharField(primary_key=True, max_length=64)
@@ -17,7 +17,7 @@ class SisterOrg(models.Model):
 class Supporter(models.Model):
     first_name = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128)
-    email = models.CharField(primary_key=True, max_length=512)
+    email = models.EmailField(primary_key=True, max_length=512)
     affiliation = models.ForeignKey(SisterOrg, on_delete=models.SET_NULL, null=True)
     join_date = models.DateField()
 
@@ -37,4 +37,4 @@ class FundingGoal(models.Model):
 
 class FundingGoalImages(models.Model):
     funding_goal = models.ForeignKey(FundingGoal, on_delete=models.CASCADE)
-    link = models.CharField(primary_key=True, max_length=512)
+    link = models.ImageField()
